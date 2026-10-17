@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BadAss Captcha — A 2Captcha-compatible solving API</title>
+  <meta name="description" content="Solve reCAPTCHA v2 and image CAPTCHAs through a simple 2Captcha-compatible API with transparent per-task pricing.">
+  <link rel="canonical" href="https://badasscaptcha.com/">
+  <meta name="theme-color" content="#c7ff4a">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="BadAss Captcha">
+  <meta property="og:title" content="BadAss Captcha — A 2Captcha-compatible solving API">
+  <meta property="og:description" content="Solve reCAPTCHA v2 and image CAPTCHAs through a simple 2Captcha-compatible API with transparent per-task pricing.">
+  <meta property="og:url" content="https://badasscaptcha.com/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2314161a'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='monospace' font-size='36' font-weight='700' fill='%23c7ff4a'%3EB%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/base.css">
+  <link rel="stylesheet" href="assets/site.css">
+  <script src="assets/site.js" defer></script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="#top" aria-label="BadAss Captcha home">
+        <span class="logo-mark" aria-hidden="true">B</span>
+        <span>BadAss Captcha</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+        <a href="#methods">Methods</a>
+        <a href="#api">API</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a class="nav-cta" href="#contact">Get an API key</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span>2Captcha-compatible API</p>
+        <h1 id="hero-title">CAPTCHAs in. <span>Answers out.</span></h1>
+        <p class="lede">One familiar API for reCAPTCHA v2 and image CAPTCHA tasks. Send a request, poll for the result, and pay only for the work you submit.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#api">View the API</a>
+          <a class="btn btn-ghost" href="#pricing">See pricing</a>
+        </div>
+        <ul class="trust-list" aria-label="API highlights">
+          <li>Familiar endpoints</li>
+          <li>Per-task pricing</li>
+          <li>Automatic failure refunds</li>
+        </ul>
+      </div>
+
+      <div class="captcha-visual" role="img" aria-label="A solver terminal showing a POST request to in.php, a pending state, and an OK response with a solution token.">
+        <div class="solver-window" aria-hidden="true">
+          <div class="solver-head">
+            <span class="window-dots"><i></i><i></i><i></i></span>
+            <span>API WORKFLOW / 02</span>
+            <span class="solver-live"><span class="status-dot"></span>READY</span>
+          </div>
+          <div class="solver-body">
+            <div class="solver-step">
+              <span class="step-label">01 / CREATE</span>
+              <code>POST /in.php</code>
+              <span class="step-detail">method=userrecaptcha</span>
+            </div>
+            <div class="solver-rail"><span></span><b>CAPCHA_NOT_READY</b><span></span></div>
+            <div class="solver-step solver-result">
+              <span class="step-label">02 / RESULT</span>
+              <code>OK|03AF7...SOLUTION</code>
+              <span class="step-detail">task complete / balance captured</span>
+            </div>
+          </div>
+          <div class="solver-foot"><span>SOLVER STATUS</span><strong>ANSWER RECEIVED</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="methods" aria-labelledby="methods-title">
+      <div class="section-head">
+        <div>
+          <p class="section-eyebrow">Two focused methods</p>
+          <h2 id="methods-title">The jobs this API is built for.</h2>
+        </div>
+      </div>
+      <div class="card-grid method-grid">
+        <article class="card method-card">
+          <span class="method-index">METHOD / 01</span>
+          <h3>reCAPTCHA v2</h3>
+          <p>Submit a website key and page URL through <code>userrecaptcha</code>. Poll the compatibility endpoint for the response token.</p>
+          <code class="method-name">userrecaptcha</code>
+        </article>
+        <article class="card method-card">
+          <span class="method-index">METHOD / 02</span>
+          <h3>Image CAPTCHA</h3>
+          <p>Send a base64-encoded image through <code>base64</code> and receive recognized plain text when the task is ready.</p>
+          <code class="method-name">base64</code>
+        </article>
+      </div>
+    </section>
+
+    <section class="section api-section" id="api" aria-labelledby="api-title">
+      <div class="section-head">
+        <div>
+          <p class="section-eyebrow">Compatible by design</p>
+          <h2 id="api-title">Drop it into your existing workflow.</h2>
+        </div>
+        <p class="section-lede">Create with <code>POST /in.php</code> and retrieve with <code>GET /res.php</code>. Responses use the familiar plain-text 2Captcha-compatible contract.</p>
+      </div>
+      <div class="code-grid">
+        <article class="code-card">
+          <div class="code-head">
+            <div><span>REQUEST / 01</span><h3>Create a reCAPTCHA v2 task</h3></div>
+            <button class="copy-btn" type="button" data-copy-target="#create-example">Copy code</button>
+          </div>
+          <pre id="create-example"><code>curl -X POST 'https://badasscaptcha.com/in.php' \
+  --data-urlencode 'key=YOUR_API_KEY' \
+  --data-urlencode 'method=userrecaptcha' \
+  --data-urlencode 'googlekey=YOUR_SITE_KEY' \
+  --data-urlencode 'pageurl=https://example.com/register'</code></pre>
+          <p class="copy-status" data-copy-status role="status" aria-live="polite"></p>
+        </article>
+        <article class="code-card">
+          <div class="code-head">
+            <div><span>REQUEST / 02</span><h3>Poll for the result</h3></div>
+            <button class="copy-btn" type="button" data-copy-target="#result-example">Copy code</button>
+          </div>
+          <pre id="result-example"><code>curl --get 'https://badasscaptcha.com/res.php' \
+  --data-urlencode 'key=YOUR_API_KEY' \
+  --data-urlencode 'action=get' \
+  --data-urlencode 'id=TASK_ID'</code></pre>
+          <p class="copy-status" data-copy-status role="status" aria-live="polite"></p>
+        </article>
+      </div>
+      <ul class="response-chips" aria-label="Example API responses">
+        <li>OK|TASK_ID</li>
+        <li>CAPCHA_NOT_READY</li>
+        <li>OK|SOLUTION</li>
+      </ul>
+    </section>
+
+    <section class="section pricing-section" id="pricing" aria-labelledby="pricing-title">
+      <div class="section-head">
+        <div>
+          <p class="section-eyebrow">Transparent usage</p>
+          <h2 id="pricing-title">Simple per-task rates.</h2>
+        </div>
+        <p class="section-lede">Rates shown per 1,000 submitted tasks. Failed and timed-out tasks are refunded automatically.</p>
+      </div>
+      <div class="rate-board">
+        <div class="rate-row">
+          <span class="rate-method">userrecaptcha</span>
+          <span class="rate-name">reCAPTCHA v2</span>
+          <strong>$2.00 <small>/ 1,000 tasks</small></strong>
+        </div>
+        <div class="rate-row">
+          <span class="rate-method">base64</span>
+          <span class="rate-name">Image CAPTCHA</span>
+          <strong>$0.50 <small>/ 1,000 tasks</small></strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="section-head">
+        <div>
+          <p class="section-eyebrow">Integration details</p>
+          <h2 id="faq-title">CAPTCHA API FAQ</h2>
+        </div>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary>Which CAPTCHA types are supported?</summary>
+          <p>The current API supports reCAPTCHA v2 through <code>userrecaptcha</code> and image CAPTCHA through <code>base64</code>.</p>
+        </details>
+        <details>
+          <summary>Is this compatible with 2Captcha clients?</summary>
+          <p>The service exposes compatible <code>/in.php</code> and <code>/res.php</code> endpoints and plain-text responses for the supported methods.</p>
+        </details>
+        <details>
+          <summary>What happens to failed tasks?</summary>
+          <p>Failed and timed-out tasks follow an automatic refund path. Public task mappings last five minutes.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="contact">
+        <p class="section-eyebrow">Start solving</p>
+        <h2 id="contact-title">Need a key?</h2>
+        <p class="contact-copy">Tell us whether you need reCAPTCHA v2, image CAPTCHA, or both.</p>
+        <div class="contact-actions">
+          <a class="btn btn-primary" href="https://t.me/badassaccounts">Ask for an API key</a>
+          <a class="btn btn-ghost" href="mailto:support@badassaccounts.com?subject=BadAss%20Captcha%20API%20key">Email support</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <div>
+        <a class="logo" href="#top" aria-label="BadAss Captcha home">
+          <span class="logo-mark" aria-hidden="true">B</span>
+          <span>BadAss Captcha</span>
+        </a>
+        <p class="footer-fine">BadAss Captcha provides a 2Captcha-compatible API for supported methods. 2Captcha and CapSolver are trademarks of their respective owners; no affiliation is implied.</p>
+      </div>
+      <div class="footer-meta">
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="#methods">Methods</a>
+          <a href="#api">API</a>
+          <a href="#pricing">Pricing</a>
+          <a href="https://badasscloudphone.com/">Cloud phones</a>
+          <a href="https://badassphonefarm.com/">Phone farm</a>
+          <a href="https://badasspva.com/">PVA</a>
+          <a href="https://t.me/badassaccounts">Telegram</a>
+        </nav>
+        <p class="footer-copyright">© <span data-year></span> BadAss Captcha</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
